@@ -1,5 +1,5 @@
 node {
     stage('Test') {
-    	echo 'Hello jenkins edit 1'
+    	echo 'Hello jenkins edit'
     }
 }
