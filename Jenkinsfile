@@ -6,11 +6,11 @@ node {
     }
 
     stage ('Test'){
-        echo 'Hello jenkins edit 2002'
+        echo 'Hello jenkins edit 2003'
     }
 	
 	
-    stage ('Deploy'){
-        echo 'Hello jenkins deploy stage'
-    }
+    //stage ('Deploy'){
+    //    echo 'Hello jenkins deploy stage'
+    //}
 }    
