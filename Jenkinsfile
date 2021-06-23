@@ -8,4 +8,9 @@ node {
     stage ('Test'){
         echo 'Hello jenkins edit 2002'
     }
+	
+	
+    stage ('Deploy'){
+        echo 'Hello jenkins deploy stage'
+    }
 }    
