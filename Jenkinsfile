@@ -7,6 +7,8 @@ node {
 
     stage ('Build'){
         sh 'mvn -DskipTests clean package'
+        archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
+        echo artifacts
     }
 	
 	
