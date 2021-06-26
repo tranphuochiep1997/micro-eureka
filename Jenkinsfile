@@ -7,8 +7,8 @@ node {
 
     stage ('Build'){
         sh 'mvn -DskipTests clean package'
-        archiveArtifacts '**/target/*.jar'
-        //echo archiveArtifacts
+        sh 'pwd'
+        sh 'ls'
     }
 	
 	
