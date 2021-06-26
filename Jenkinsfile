@@ -7,12 +7,11 @@ node {
 
     stage ('Build'){
         sh 'mvn -DskipTests clean package'
-        sh 'cp target/*.jar /home/tranphuochiep1997/build/'
-        sh 'ls /home/tranphuochiep1997/build'
+
     }
 	
-	
-    //stage ('Deploy'){
-    //    echo 'Hello jenkins deploy stage'
-    //}
+    stage ('Deploy'){
+       sh 'cp target/*.jar /home/tranphuochiep1997/build/'
+       sh 'ls /home/tranphuochiep1997/build'
+    }
 }    
