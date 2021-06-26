@@ -6,7 +6,7 @@ node {
     }
 
     stage ('Test'){
-        echo 'Hello jenkins edit 2003'
+        echo 'Hello jenkins edit 2004'
     }
 	
 	
