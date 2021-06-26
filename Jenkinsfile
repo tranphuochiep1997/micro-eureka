@@ -5,8 +5,8 @@ node {
         git branch: 'main', url: 'https://github.com/tranphuochiep1997/micro-eureka.git'
     }
 
-    stage ('Test'){
-        echo 'Hello jenkins edit 2004'
+    stage ('Build'){
+        sh 'mvn -DskipTests clean package'
     }
 	
 	
