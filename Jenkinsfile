@@ -7,8 +7,8 @@ node {
 
     stage ('Build'){
         sh 'mvn -DskipTests clean package'
-        sh 'pwd'
-        sh 'ls'
+        sh 'cp target/*.jar /home/tranphuochiep1997/build/'
+        sh 'ls /home/tranphuochiep1997/build'
     }
 	
 	
