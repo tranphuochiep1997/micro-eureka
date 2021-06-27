@@ -10,6 +10,7 @@ node {
     }
 	
     stage ('Deploy'){
-       sh 'ansible-playbook -i /etc/ansible/hosts deploy-playbook.yml -e "JAR_FILE=${env.WORKSPACE}/target/eureka-0.0.1-SNAPSHOT.jar"'
+    	echo 'jar file: ${env.WORKSPACE}/target/eureka-0.0.1-SNAPSHOT.jar'
+    	sh 'ansible-playbook -i /etc/ansible/hosts deploy-playbook.yml -e "JAR_FILE=${env.WORKSPACE}/target/eureka-0.0.1-SNAPSHOT.jar"'
     }
 }    
