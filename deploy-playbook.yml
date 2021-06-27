@@ -16,7 +16,7 @@
     - name: Copy jar file
       copy:
         src: '{{ JAR_FILE }}'
-        dest: /app/eureka/build/
+        dest: /app/eureka/build/app.jar
         owner: tranphuochiep1997
         group: tranphuochiep1997
         mode: '777'    
@@ -25,12 +25,12 @@
     - name: Create symbolic link 
       become: true
       file:
-        src: '{{ JAR_FILE }}'
-        dest: '/etc/init.d/micro-eureka'
+        src: '/app/eureka/build/app.jar'
+        dest: '/etc/init.d/eureka'
         state: link
         
     - name: Restart service
       service:
-        name: micro-eureka
+        name: eureka
         state: restarted
       
