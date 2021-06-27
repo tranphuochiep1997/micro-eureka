@@ -1,0 +1,36 @@
+- name: Deploy app
+  hosts: appinstances
+  become: true
+  tasks: 
+    - name: Update APT package manager repositories cache
+      become: true
+      apt:
+        update_cache: yes
+        
+    - name: Install package ubuntu
+      become: true
+      apt: 
+        name: ['openjdk-8-jdk']
+        state: present
+       
+    - name: Copy jar file
+      copy:
+        src: '{{ JAR_FILE }}'
+        dest: /app/eureka/build/
+        owner: tranphuochiep1997
+        group: tranphuochiep1997
+        mode: '777'    
+      #with_fileglob: 'target/*.jar'
+      
+    - name: Create symbolic link 
+      become: true
+      file:
+        src: '{{ JAR_FILE }}'
+        dest: '/etc/init.d/micro-eureka'
+        state: link
+        
+    - name: Restart service
+      service:
+        name: micro-eureka
+        state: restarted
+      

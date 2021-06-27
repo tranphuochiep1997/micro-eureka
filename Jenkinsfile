@@ -7,11 +7,9 @@ node {
 
     stage ('Build'){
         sh 'mvn -DskipTests clean package'
-
     }
 	
     stage ('Deploy'){
-       sh 'cp target/*.jar /home/tranphuochiep1997/build/'
-       sh 'ls /home/tranphuochiep1997/build'
+       sh 'ansible-playbook -i /etc/ansible/hosts deploy-playbook.yml -e "JAR_FILE=${env.WORKSPACE}/target/eureka-0.0.1-SNAPSHOT.jar"'
     }
 }    
