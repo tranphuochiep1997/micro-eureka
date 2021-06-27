@@ -1,6 +1,9 @@
 - name: Deploy app
   hosts: appinstances
   become: true
+  vars:
+    SERVICE_NAME: eureka
+    
   tasks: 
     - name: Update APT package manager repositories cache
       become: true
@@ -16,19 +19,19 @@
     - name: Copy jar file
       copy:
         src: '{{ JAR_FILE }}'
-        dest: /app/eureka/build/app.jar
+        dest: '/app/{{SERVICE_NAME}}/build/app.jar'
         owner: tranphuochiep1997
         group: tranphuochiep1997
         mode: '777'    
         
     - name: Copy systemd service file to server
       copy:
-        src: eureka.service
+        src: '{{SERVICE_NAME}}.service'
         dest: /etc/systemd/system
         
     - name: Restart service
       systemd:
-        name: eureka
+        name: '{{SERVICE_NAME}}'
         state: restarted
         enabled: yes
       
